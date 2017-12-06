@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,11 @@ namespace CoreHybridFramwork
 
             //configuration file - locators 
             //driver.FindElement(By.Xpath())
+
+            IWebDriver driver = new FirefoxDriver();
+            driver.Url = "https://gmail.com";
+            driver.FindElement(By.XPath("//*[@id='identifierId']")).SendKeys("hello");
+            
         }
     }
 }
