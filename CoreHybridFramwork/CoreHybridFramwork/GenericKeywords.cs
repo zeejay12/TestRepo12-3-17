@@ -22,19 +22,30 @@ namespace CoreHybridFramwork
 
         IWebDriver driver = null;
 
-        public void openBrowser(string bType)// which browser
+        public void OpenBrowser(string bType)// which browser
         {
-
+            if (bType.Equals("Mozilla"))
+            {
+                driver = new FirefoxDriver();
+            }
+            else if (bType.Equals("Chrome"))
+            {
+                driver = new ChromeDriver();
+            }
+            else if (bType.Equals("IE"))
+            {
+                driver = new InternetExplorerDriver();
+            }
         }
-        public void navigate(string url)//which site
+        public void Navigate(string url)//which site
         {
             driver.Url = url;
         }
-        public void click(string locator)//which button
+        public void Click(string locator)//which button
         {
             //driver.FindElement().Click;
         }
-        public void input(string locator, string data)
+        public void Input(string locator, string data)
         {
 
         }
