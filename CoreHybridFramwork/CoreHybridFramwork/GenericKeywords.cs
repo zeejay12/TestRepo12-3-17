@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CoreHybridFramwork
 {
+    
     class GenericKeywords
     {
         //open browser
@@ -18,10 +19,11 @@ namespace CoreHybridFramwork
         //input the data- type
         //verify Title 
         //verify text
-        IWebDriver driver = null;
 
-        public void openBrowser(string bType)// which browser
+        IWebDriver driver = null;
+        public void OpenBrowser(string bType)// which browser
         {
+           
             if (bType.Equals("Mozilla"))
             {
                 driver = new FirefoxDriver();
@@ -30,10 +32,11 @@ namespace CoreHybridFramwork
             {
                 driver = new ChromeDriver();
             }
-            else if (bType.Equals("IE"))
+            else if(bType.Equals("IE"))
             {
                 driver = new InternetExplorerDriver();
             }
+            //implicit wait
         }
         public void navigate(string url)//which site
         {
@@ -41,7 +44,7 @@ namespace CoreHybridFramwork
         }
         public void click(string locator)//which button
         {
-
+            driver.FindElement().Click;
         }
         public void input(string locator, string data)//
         {
