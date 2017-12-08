@@ -1,4 +1,8 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,15 +18,26 @@ namespace CoreHybridFramwork
         //input the data- type
         //verify Title 
         //verify text
-
+        IWebDriver driver = null;
 
         public void openBrowser(string bType)// which browser
         {
-
+            if (bType.Equals("Mozilla"))
+            {
+                driver = new FirefoxDriver();
+            }
+            else if (bType.Equals("Chrome"))
+            {
+                driver = new ChromeDriver();
+            }
+            else if (bType.Equals("IE"))
+            {
+                driver = new InternetExplorerDriver();
+            }
         }
         public void navigate(string url)//which site
         {
-
+            driver.Url = url;
         }
         public void click(string locator)//which button
         {

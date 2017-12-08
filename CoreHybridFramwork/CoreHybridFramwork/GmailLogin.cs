@@ -26,10 +26,17 @@ namespace CoreHybridFramwork
             //configuration file - locators 
             //driver.FindElement(By.Xpath())
 
-            IWebDriver driver = new FirefoxDriver();
-            driver.Url = "https://gmail.com";
-            driver.FindElement(By.XPath("//*[@id='identifierId']")).SendKeys("hello");
-            
+            /* IWebDriver driver = new FirefoxDriver();
+             driver.Url = "https://gmail.com";
+             driver.FindElement(By.XPath("//*[@id='identifierId']")).SendKeys("hello");
+             driver.FindElement(By.XPath(".//*[@id='identifierNext']/div[2]")).Click();
+             */
+
+            GenericKeywords app = new GenericKeywords();
+            app.openBrowser("Mozilla");
+            app.navigate("http://gmail.com");
+            app.input("//*[@id='identifierId']", "hello");
+            app.click("//*[@id='identifierNext");
         }
     }
 }
