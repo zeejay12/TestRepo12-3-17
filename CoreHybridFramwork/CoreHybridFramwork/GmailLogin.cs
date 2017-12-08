@@ -33,12 +33,12 @@ namespace CoreHybridFramwork
                         */
 
             GenericKeywords app = new GenericKeywords();
-            /*
+            
             app.OpenBrowser("Mozilla");
-            app.navigate("https://gmail.com");
-            app.input("//*[@id='identifierId']", "hello");
-            app.click("//*[@id=;identifierNext']/div[2]");
-            */
+            app.Navigate("url");
+            app.Input("username_id", "seleniumtraining10");
+            app.Click("nextButton_xpath");
+            
         }
     }
 }

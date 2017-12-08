@@ -4,6 +4,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,21 +38,54 @@ namespace CoreHybridFramwork
                 driver = new InternetExplorerDriver();
             }
         }
-        public void Navigate(string url)//which site
+        public void Navigate(string urlkey)//which site
         {
-            driver.Url = url;
+            Console.WriteLine("Navigating to " + ConfigurationManager.AppSettings[urlkey]);
+            driver.Url = ConfigurationManager.AppSettings[urlkey];
         }
-        public void Click(string locator)//which button
+        public void Click(string locatorkey)//which button
         {
-            //driver.FindElement().Click;
+            Console.WriteLine("Clicking on " + ConfigurationManager.AppSettings[locatorkey]);
+            IWebElement e = GetElement(locatorkey);
+            e.Click();
         }
-        public void Input(string locator, string data)
+        public void Input(string locatorkey, string data)
         {
-
+            Console.WriteLine("Clicking on " + ConfigurationManager.AppSettings[locatorkey]);
+            if (locatorkey.EndsWith("_id"))
+            {
+                driver.FindElement(By.Id(ConfigurationManager.AppSettings[locatorkey])).SendKeys(data);
+            }
+            else if (locatorkey.EndsWith("_name"))
+            {
+                driver.FindElement(By.Name(ConfigurationManager.AppSettings[locatorkey])).SendKeys(data);
+            }
+            else if (locatorkey.EndsWith("_xpath"))
+            {
+                driver.FindElement(By.XPath(ConfigurationManager.AppSettings[locatorkey])).SendKeys(data);
+            }
         }
         public void verifyText(string locator, string expectedText)
         {
 
+        }
+
+        /**********utility functions************/
+
+        public IWebElement GetElement(string locatorKey)
+        {
+            if (locatorKey.EndsWith("_id"))
+            {
+                driver.FindElement(By.Id(ConfigurationManager.AppSettings[locatorKey])).Click();
+            }
+            else if (locatorKey.EndsWith("_name"))
+            {
+                driver.FindElement(By.Name(ConfigurationManager.AppSettings[locatorKey])).Click();
+            }
+            else if (locatorKey.EndsWith("_xpath"))
+            {
+                driver.FindElement(By.XPath(ConfigurationManager.AppSettings[locatorKey])).Click();
+            }
         }
     }
 }
