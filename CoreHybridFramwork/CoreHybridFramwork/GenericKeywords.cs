@@ -20,23 +20,10 @@ namespace CoreHybridFramwork
         //verify Title 
         //verify text
 
-        IWebDriver driver = null;
-        public void OpenBrowser(string bType)// which browser
+
+        public void openBrowser(string bType)// which browser
         {
-           
-            if (bType.Equals("Mozilla"))
-            {
-                driver = new FirefoxDriver();
-            }
-            else if (bType.Equals("Chrome"))
-            {
-                driver = new ChromeDriver();
-            }
-            else if(bType.Equals("IE"))
-            {
-                driver = new InternetExplorerDriver();
-            }
-            //implicit wait
+
         }
         public void navigate(string url)//which site
         {
