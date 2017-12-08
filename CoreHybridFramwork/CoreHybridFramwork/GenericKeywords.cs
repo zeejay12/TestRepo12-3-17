@@ -20,6 +20,7 @@ namespace CoreHybridFramwork
         //verify Title 
         //verify text
 
+        IWebDriver driver = null;
 
         public void openBrowser(string bType)// which browser
         {
@@ -31,9 +32,9 @@ namespace CoreHybridFramwork
         }
         public void click(string locator)//which button
         {
-            driver.FindElement().Click;
+            //driver.FindElement().Click;
         }
-        public void input(string locator, string data)//
+        public void input(string locator, string data)
         {
 
         }
