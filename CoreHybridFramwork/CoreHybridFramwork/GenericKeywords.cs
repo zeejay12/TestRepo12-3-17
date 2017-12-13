@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace CoreHybridFramwork
 {
     
-    class GenericKeywords
+    public class GenericKeywords
     {
         //open browser
         //navigate
@@ -55,7 +55,7 @@ namespace CoreHybridFramwork
             IWebElement e = GetElement(locatorkey);
             e.SendKeys(data);
         }
-        public void verifyText(string locatorkey, string expectedText)
+        public void VerifyText(string locatorkey, string expectedText)
         {
             IWebElement e = GetElement(locatorkey);
             string actualText = e.Text;

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using ExcelReader;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using System;
@@ -34,13 +35,12 @@ namespace CoreHybridFramwork
                         driver.FindElement(By.XPath("//*[@id='identifierId']")).SendKeys("hello");
                         driver.FindElement(By.XPath("//*[@id=;identifierNext']/div[2]")).Click();
                         */
-
-            GenericKeywords app = new GenericKeywords();
+            string testName = "GmailLogin";
+            ExcelReaderFile xls = new ExcelReaderFile(Constants.SUITEA_XLS);
+            Keywords app = new Keywords();
+            app.executeKeywords(testName, xls);
             
-            app.OpenBrowser("Mozilla");
-            app.Navigate("url");
-            app.Input("username_id", "seleniumtraining10");
-            app.Click("nextButton_xpath");
+            
             
         }
     }
